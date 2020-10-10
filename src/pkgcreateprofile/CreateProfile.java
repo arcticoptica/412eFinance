@@ -2,7 +2,7 @@ package pkgcreateprofile;
 
 /**
  *
- * @author Team Rho
+ * @author Elitza
  */
 public class CreateProfile {
     

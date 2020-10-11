@@ -9,50 +9,55 @@ import pkgloanoptions.LoanOptions;
 import pkglogin.Authenticate;
 import pkglogin.NewProfile;
 import java.util.ArrayList;
+import java.util.HashMap;
+import javafx.scene.paint.Color;
 
 /**
  *
  * @author Team Rho
  */
 public class TestHarness {
-    
+
     private AutoPayment autoPay;
     private CheckBalance checkBal;
+    private EditCustomerProfile editCustomer;
     private Authenticate userAuth;
     private NewProfile userProfile;
-    
+
     /**
      * Default constructor for TestHarness that runs tests.
      */
     public TestHarness() {
         testAutoPayment();
         testCheckBalance();
-        
+
         testCreateProfile();
         testContactDetails();
-        
-        testAUthenticate();
+
+        testEditCustomerProfile();
+
+        testAuthenticate();
         testNewProfile();
 
         //CreateProfile Test Cases
         //Check for valid email
-        CreateProfile profile1 = new CreateProfile("john123@gmail.com","password1","John", "Smith", "08/09/1987", 1);
+        CreateProfile profile1 = new CreateProfile("john123@gmail.com", "password1", "John", "Smith", "08/09/1987", 1);
         System.out.println(profile1.toString());
 
         //Get Email
-        System.out.println("Email on profile: "+profile1.getEmail());
+        System.out.println("Email on profile: " + profile1.getEmail());
 
         //Get Password
-        System.out.println("Password for profile: "+profile1.getPassword()+"\n");
+        System.out.println("Password for profile: " + profile1.getPassword() + "\n");
 
         //get firstName
-        System.out.println("First name on profile: "+profile1.getFirstName()+"\n");
+        System.out.println("First name on profile: " + profile1.getFirstName() + "\n");
 
         //get lastName
-        System.out.println("Last name on profile: "+profile1.getLastName()+"\n");
+        System.out.println("Last name on profile: " + profile1.getLastName() + "\n");
 
         //get Date of Birth
-        System.out.println("Date of birth on profile: "+profile1.getDoB()+"\n");
+        System.out.println("Date of birth on profile: " + profile1.getDoB() + "\n");
 
         //change email
         profile1.setEmail("smith123@gmail.com");
@@ -79,20 +84,18 @@ public class TestHarness {
         System.out.println(profile1.toString());
         System.out.println();
 
-
-
         //ContactDetails Test Cases
-        ContactDetails contact1 = new ContactDetails("18001234567","atzFinance@gmail.com","1 Finance Road, Milwaukee, WI, 53201");
+        ContactDetails contact1 = new ContactDetails("18001234567", "atzFinance@gmail.com", "1 Finance Road, Milwaukee, WI, 53201");
         System.out.println(profile1.toString());
 
         //Get ATZ phone number
-        System.out.println("ATZ Finance Phone Number: "+contact1.getATZphoneNumber());
+        System.out.println("ATZ Finance Phone Number: " + contact1.getATZphoneNumber());
 
         //get ATZ email
-        System.out.println("ATZ Finance Email: "+contact1.getATZemail());
+        System.out.println("ATZ Finance Email: " + contact1.getATZemail());
 
         //get ATZ address
-        System.out.println("ATZ Finance Address: "+contact1.getATZaddress());
+        System.out.println("ATZ Finance Address: " + contact1.getATZaddress());
 
         //change ATZ phone number
         contact1.setATZphoneNumber("18002223333");
@@ -108,9 +111,9 @@ public class TestHarness {
         contact1.setATZaddress("100 Finance Road, Milwaukee, WI, 53202");
         System.out.println(contact1.toString());
         System.out.println();
-        
+
     }
-    
+
     /**
      * Test for AutoPayment controller class.
      * <p>Test for AutoPayment class creates an instance of the class, then checks the 'getStatus' and 'setAutoPay' methods.
@@ -132,7 +135,7 @@ public class TestHarness {
         }
         System.out.println("[End]");
     }
-    
+
     /**
      * Test for CheckBalance controller class.
      * <p>Test for CheckBalance class creates an instance of the class, then checks the 'getBalance' method.
@@ -147,38 +150,57 @@ public class TestHarness {
         }
         System.out.println("[End]");
     }
-      
 
-    public void testCreateProfile()
-        {
-            ArrayList<CreateProfile> profiles= new ArrayList<>();
+    public void testCreateProfile() {
+        ArrayList<CreateProfile> profiles = new ArrayList<>();
 
-            CreateProfile profile1 = new CreateProfile("john123@gmail.com","password1","John", "Smith", "08/09/1987", 1);
-            CreateProfile profile2 = new CreateProfile("jane456@gmail.com","password2","Jane", "Doe", "12/08/1992", 1);
+        CreateProfile profile1 = new CreateProfile("john123@gmail.com", "password1", "John", "Smith", "08/09/1987", 1);
+        CreateProfile profile2 = new CreateProfile("jane456@gmail.com", "password2", "Jane", "Doe", "12/08/1992", 1);
 
-            profiles.add(profile1);
-            profiles.add(profile2);
+        profiles.add(profile1);
+        profiles.add(profile2);
 
-            for(CreateProfile profile: profiles)
-            {
-               System.out.print(profile);
-            }
+        for (CreateProfile profile : profiles) {
+            System.out.print(profile);
         }
+    }
 
-    public void testContactDetails()
-        {
-            ArrayList<ContactDetails> contacts= new ArrayList<>();
+    public void testContactDetails() {
+        ArrayList<ContactDetails> contacts = new ArrayList<>();
 
-            ContactDetails contact1 = new ContactDetails("18001234567","atzFinance@gmail.com","1 Finance Road, Milwaukee, WI, 53201");
+        ContactDetails contact1 = new ContactDetails("18001234567", "atzFinance@gmail.com", "1 Finance Road, Milwaukee, WI, 53201");
 
-            contacts.add(contact1);
+        contacts.add(contact1);
 
-            for(ContactDetails contact: contacts)
-            {
-               System.out.print(contact);
-            }
+        for (ContactDetails contact : contacts) {
+            System.out.print(contact);
         }
-    
+    }
+
+    /**
+     * Test for EditCustomerProfile controller class.
+     * <p>Test for EditCustomerProfile class creates an instance of the class, then checks the 'getStatus' and 'editProfileInfo' methods.
+     */
+    public void testEditCustomerProfile() {
+        System.out.println("Start of EditCustomerProfile Test");
+        this.editCustomer = new EditCustomerProfile();
+        HashMap<String, String> info = null;
+        info.put("1", "asdf");
+        info.put("2", "fdsa");
+        if (this.editCustomer.getStatus() == -1) {
+            System.out.println("getStatus: Pass");
+            this.editCustomer.editProfileInfo(info);
+            if (this.editCustomer.getStatus() == 0) {
+                System.out.println("Changes Successful");
+            } else {
+                System.out.println("Error");
+            }
+        } else {
+            System.out.println("getStatus: Failure");
+        }
+        System.out.println("End of EditCustomerPrrofile Test");
+    }
+
     public void testAuthenticate() {
         this.userAuth = new Authenticate();
         String email = "axf123";
@@ -188,9 +210,9 @@ public class TestHarness {
             System.out.println("User Authenticated");
         } else {
             System.out.println("Invalid login credentials. Please try again ");
-        }   
+        }
     }
-    
+
     public void testNewProfile() {
         this.userProfile = new NewProfile();
         String email = "axf123";

@@ -135,7 +135,7 @@ public class CreateProfile {
     {
         return "Email: " + email + "\nPassword: " + password +
                 "\nFirst Name: " + firstName + "\nLast Name: " + lastName +
-                "\nDate of Birth: " + DoB + "/nStatus: " + status;
+                "\nDate of Birth: " + DoB + "\nStatus: " + status;
     }
     
     /**

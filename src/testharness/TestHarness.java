@@ -10,7 +10,6 @@ import pkglogin.Authenticate;
 import pkglogin.NewProfile;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javafx.scene.paint.Color;
 
 /**
  *

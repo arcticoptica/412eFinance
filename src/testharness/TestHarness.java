@@ -18,6 +18,8 @@ public class TestHarness {
     
     private AutoPayment autoPay;
     private CheckBalance checkBal;
+    private Authenticate userAuth;
+    private NewProfile userProfile;
     
     /**
      * Default constructor for TestHarness that runs tests.
@@ -28,6 +30,9 @@ public class TestHarness {
         
         testCreateProfile();
         testContactDetails();
+        
+        testAUthenticate();
+        testNewProfile();
 
         //CreateProfile Test Cases
         //Check for valid email
@@ -173,4 +178,27 @@ public class TestHarness {
                System.out.print(contact);
             }
         }
+    
+    public void testAuthenticate() {
+        this.userAuth = new Authenticate();
+        String email = "axf123";
+        String pw = "password123";
+        this.userAuth.userLogIn(email, pw);
+        if (this.userAuth.getStatus() == 0) {
+            System.out.println("User Authenticated");
+        } else {
+            System.out.println("Invalid login credentials. Please try again ");
+        }   
+    }
+    
+    public void testNewProfile() {
+        this.userProfile = new NewProfile();
+        String email = "axf123";
+        this.userProfile.checkEmail(email);
+        if (this.userProfile.getStatus() == 0) {
+            System.out.println("Profile already exists");
+        } else {
+            System.out.println("New profile");
+        }
+    }
 }

@@ -22,6 +22,7 @@ public class TestHarness {
     private EditCustomerProfile editCustomer;
     private Authenticate userAuth;
     private NewProfile userProfile;
+    private LoanOptions loanOptions;
 
     /**
      * Default constructor for TestHarness that runs tests.
@@ -36,6 +37,7 @@ public class TestHarness {
         testEditCustomerProfile();
 
         testAuthenticate();
+        testLoanOptions();
         testNewProfile();
 
         //CreateProfile Test Cases
@@ -115,7 +117,9 @@ public class TestHarness {
 
     /**
      * Test for AutoPayment controller class.
-     * <p>Test for AutoPayment class creates an instance of the class, then checks the 'getStatus' and 'setAutoPay' methods.
+     * <p>
+     * Test for AutoPayment class creates an instance of the class, then checks
+     * the 'getStatus' and 'setAutoPay' methods.
      */
     private void testAutoPayment() {
         System.out.println("Start of AutoPayment test");
@@ -137,7 +141,9 @@ public class TestHarness {
 
     /**
      * Test for CheckBalance controller class.
-     * <p>Test for CheckBalance class creates an instance of the class, then checks the 'getBalance' method.
+     * <p>
+     * Test for CheckBalance class creates an instance of the class, then checks
+     * the 'getBalance' method.
      */
     private void testCheckBalance() {
         System.out.println("Start of CheckBalance test");
@@ -151,6 +157,8 @@ public class TestHarness {
     }
 
     public void testCreateProfile() {
+
+        System.out.println("Start of CreateProfile test");
         ArrayList<CreateProfile> profiles = new ArrayList<>();
 
         CreateProfile profile1 = new CreateProfile("john123@gmail.com", "password1", "John", "Smith", "08/09/1987", 1);
@@ -162,9 +170,14 @@ public class TestHarness {
         for (CreateProfile profile : profiles) {
             System.out.print(profile);
         }
+        System.out.println();
+        System.out.print("[End]");
     }
 
     public void testContactDetails() {
+        System.out.println("");
+        System.out.println("Start of ContactDetails test");
+
         ArrayList<ContactDetails> contacts = new ArrayList<>();
 
         ContactDetails contact1 = new ContactDetails("18001234567", "atzFinance@gmail.com", "1 Finance Road, Milwaukee, WI, 53201");
@@ -174,11 +187,15 @@ public class TestHarness {
         for (ContactDetails contact : contacts) {
             System.out.print(contact);
         }
+        System.out.println("");
+        System.out.println("[End]");
     }
 
     /**
      * Test for EditCustomerProfile controller class.
-     * <p>Test for EditCustomerProfile class creates an instance of the class, then checks the 'getStatus' and 'editProfileInfo' methods.
+     * <p>
+     * Test for EditCustomerProfile class creates an instance of the class, then
+     * checks the 'getStatus' and 'editProfileInfo' methods.
      */
     public void testEditCustomerProfile() {
         System.out.println("Start of EditCustomerProfile Test");
@@ -197,10 +214,26 @@ public class TestHarness {
         } else {
             System.out.println("getStatus: Failure");
         }
-        System.out.println("End of EditCustomerPrrofile Test");
+        System.out.println("[End]");
+    }
+
+    /**
+     * <p>
+     * Test for LoanOptions class creates an instance of the class, then checks
+     * that 'getOptList' and 'getOptions' work as intended
+     */
+    public void testLoanOptions() {
+        System.out.println("Start of LoanOptions Test");
+        this.loanOptions = new LoanOptions();
+        ArrayList<String> options = this.loanOptions.getOptList();
+        for (String option : options) {
+            System.out.println(option);
+        }
+        System.out.println("[End]");
     }
 
     public void testAuthenticate() {
+        System.out.println("Start of Authenticate test");
         this.userAuth = new Authenticate();
         String email = "axf123";
         String pw = "password123";
@@ -210,9 +243,11 @@ public class TestHarness {
         } else {
             System.out.println("Invalid login credentials. Please try again ");
         }
+        System.out.println("[End]");
     }
 
     public void testNewProfile() {
+        System.out.println("Start of NewProfile test");
         this.userProfile = new NewProfile();
         String email = "axf123";
         this.userProfile.checkEmail(email);
@@ -221,5 +256,6 @@ public class TestHarness {
         } else {
             System.out.println("New profile");
         }
+        System.out.println("[End]");
     }
 }

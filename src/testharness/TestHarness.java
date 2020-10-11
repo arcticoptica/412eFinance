@@ -200,7 +200,7 @@ public class TestHarness {
     public void testEditCustomerProfile() {
         System.out.println("Start of EditCustomerProfile Test");
         this.editCustomer = new EditCustomerProfile();
-        HashMap<String, String> info = null;
+        HashMap<String, String> info = new HashMap<>();
         info.put("1", "asdf");
         info.put("2", "fdsa");
         if (this.editCustomer.getStatus() == -1) {

@@ -121,10 +121,12 @@ public class TestHarness {
      * Test for AutoPayment class creates an instance of the class, then checks
      * the 'getStatus' and 'setAutoPay' methods.
      */
-    private void testAutoPayment() {
-        System.out.println("Start of AutoPayment test");
-        this.autoPay = new AutoPayment();
-        if (this.autoPay.getStatus() == -1) {
+    
+   
+     private void testAutoPayment() {
+       System.out.println("Start of AutoPayment test");
+        this.autoPay = new AutoPayment("031000053", "111222333444", "100.00");
+       if (this.autoPay.getStatus() == -1) {
             System.out.println(">getStatus: Pass");
             this.autoPay.setAutoPay("credit", 2, 3);
             if (this.autoPay.getStatus() == 0) {
@@ -136,8 +138,9 @@ public class TestHarness {
             System.out.println(">getStatus: Fail");
             System.out.println(">setAutoPay: Incomplete Test");
         }
-        System.out.println("[End]");
+       System.out.println("[End]");
     }
+   
 
     /**
      * Test for CheckBalance controller class.
@@ -259,3 +262,4 @@ public class TestHarness {
         System.out.println("[End]");
     }
 }
+

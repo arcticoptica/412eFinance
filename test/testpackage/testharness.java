@@ -3,16 +3,29 @@ package testpackage;
 import java.util.ArrayList;
 import pkgcontact.ContactDetails;
 import pkgcreateprofile.CreateProfile;
+import pkgautopayment.AutoPayment;
+import pkgcheckbalance.CheckBalance;
+import pkgeditprofile.EditCustomerProfile;
+import pkgloanoptions.LoanOptions;
+import pkglogin.Authenticate;
+import pkglogin.NewProfile;
 /**
  *
  * @author 
  */
 public class testharness {
     
+    private AutoPayment autoPay;
+    private CheckBalance checkBal;
+    
     public testharness()
     {
+        testAutoPayment();
+        testCheckBalance();
+        
         testCreateProfile();
         testContactDetails();
+        
         
         //CreateProfile Test Cases
         //Check for valid email
@@ -91,6 +104,13 @@ public class testharness {
         
     }
     
+        /**
+     * Test for CreateProfile controller class.
+     * <p>Test for ContactDetails class creates an instance of the class, then checks the
+     * 'getEmail', 'getPassword', 'getFirstName', 'getLastName', 'getDoB', 
+     * 'setEmail', 'setPassword', 'setFirstName', 'setLastName', 'setDoB'methods.
+     */
+    
     public void testCreateProfile()
         {
             ArrayList<CreateProfile> profiles= new ArrayList<>();
@@ -107,6 +127,11 @@ public class testharness {
             }
         }
     
+    /**
+     * Test for ContactDetails controller class.
+     * <p>Test for ContactDetails class creates an instance of the class, then checks the 'getATZphoneNumber', 
+     * 'getATZemail', 'getATZaddress', 'setATZphoneNumber, 'setATZemail', and 'setATZaddress' methods.
+     */
     public void testContactDetails()
         {
             ArrayList<ContactDetails> contacts= new ArrayList<>();
@@ -120,5 +145,42 @@ public class testharness {
                System.out.print(contact);
             }
         }
+    
+    /**
+     * Test for AutoPayment controller class.
+     * <p>Test for AutoPayment class creates an instance of the class, then checks the 'getStatus' and 'setAutoPay' methods.
+     */
+    private void testAutoPayment() {
+        System.out.println("Start of AutoPayment test");
+        this.autoPay = new AutoPayment("031000053", "111222333444", "100.00");
+        if (this.autoPay.getStatus() == -1) {
+            System.out.println(">getStatus: Pass");
+            this.autoPay.setAutoPay("credit", 2, 3);
+            if (this.autoPay.getStatus() == 0) {
+                System.out.println(">setAutoPay: Pass");
+            } else {
+                System.out.println(">setAutoPay: Fail");
+            }
+        } else {
+            System.out.println(">getStatus: Fail");
+            System.out.println(">setAutoPay: Incomplete Test");
+        }
+        System.out.println("[End]");
+    }
+    
+    /**
+     * Test for CheckBalance controller class.
+     * <p>Test for CheckBalance class creates an instance of the class, then checks the 'getBalance' method.
+     */
+    private void testCheckBalance() {
+        System.out.println("Start of CheckBalance test");
+        this.checkBal = new CheckBalance();
+        if (this.checkBal.getBalance() == 0) {
+            System.out.println(">getBalance: Pass");
+        } else {
+            System.out.println(">getBalance: Fail");
+        }
+        System.out.println("[End]");
+    }
     
 }

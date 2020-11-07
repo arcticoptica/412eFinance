@@ -107,8 +107,8 @@ public class testharness {
         /**
      * Test for CreateProfile controller class.
      * <p>Test for ContactDetails class creates an instance of the class, then checks the
-     * 'getEmail', 'getPassword', 'getFirstName', 'getLastName', 'getDoB', 
-     * 'setEmail', 'setPassword', 'setFirstName', 'setLastName', 'setDoB'methods.
+ 'getEmail', 'getPassword', 'getFirstName', 'getLastName', 'getDoB', 
+ 'setEmail', 'setPassword', 'setFirstName', 'setLastName', 'setDoB'methods.
      */
     
     public void testCreateProfile()
@@ -130,7 +130,7 @@ public class testharness {
     /**
      * Test for ContactDetails controller class.
      * <p>Test for ContactDetails class creates an instance of the class, then checks the 'getATZphoneNumber', 
-     * 'getATZemail', 'getATZaddress', 'setATZphoneNumber, 'setATZemail', and 'setATZaddress' methods.
+ 'getATZemail', 'getATZaddress', 'setATZphoneNumber, 'setATZemail', and 'setATZaddress' methods.
      */
     public void testContactDetails()
         {

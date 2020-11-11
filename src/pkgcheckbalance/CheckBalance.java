@@ -1,6 +1,7 @@
 package pkgcheckbalance;
 
 import java.awt.event.ActionEvent;
+import main.HomeMenuUI;
 
 /**
  *
@@ -61,8 +62,13 @@ public class CheckBalance {
      */
     private void initUI() {
         balanceUI.setBackButtonListener((ActionEvent e) -> {
-            //send UI to previous page: home
-            System.out.println("Placeholder: Back button pressed.");
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new HomeMenuUI().setVisible(true);
+                }
+            });
+            this.balanceUI.dispose();
         });
         balanceUI.setContents(String.valueOf(getBalance()), String.valueOf(getUpcoming()));
     }

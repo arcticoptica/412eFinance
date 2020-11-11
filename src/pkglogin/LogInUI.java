@@ -144,7 +144,7 @@ public class LogInUI extends javax.swing.JFrame {
                 uj.addMockUsers();
                 users = uj.getUserList();
                 for (int i = 0; i < users.size(); i++) {
-                    if ((users.get(i).getName().equals(username)) && (users.get(i).getPW()).equals(password)) {
+                    if ((users.get(i).getUsername().equals(username)) && (users.get(i).getPW()).equals(password)) {
                         dispose();
                         new HomeMenuUI().setVisible(true);
                     }

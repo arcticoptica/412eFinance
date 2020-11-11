@@ -5,6 +5,8 @@
  */
 package main;
 
+import pkgcheckbalance.CheckBalance;
+
 /**
  *
  * @author Nick Meyer
@@ -158,7 +160,13 @@ public class HomeMenuUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AutoPaymentButtonActionPerformed
 
     private void CheckBalanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBalanceButtonActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new CheckBalance();
+                }
+            });
+        this.dispose();
     }//GEN-LAST:event_CheckBalanceButtonActionPerformed
 
     private void ManualPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManualPaymentButtonActionPerformed

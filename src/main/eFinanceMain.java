@@ -1,7 +1,5 @@
 package main;
 
-import pkglogin.LogInUI;
-
 /**
  *
  * @author Team Rho
@@ -9,14 +7,7 @@ import pkglogin.LogInUI;
 public class eFinanceMain {
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Team Rho's eFinance app");
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new LogInUI().setVisible(true);
-            }
-        });
+        eFinanceMainController cntl = new eFinanceMainController();
     }
     
 }

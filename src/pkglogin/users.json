@@ -3,17 +3,29 @@
     {
       "userID": 1,
       "username": "Steve",
-      "password": "pass1"
+      "password": "pass1",
+      "email": "steve01@gmail.com",
+      "firstName": "Steve",
+      "lastName": "Ryan",
+      "DoB": "11/02/1986"
     },
     {
       "userID": 2,
       "username": "Thomas",
-      "password": "pass2"
+      "password": "pass2",
+      "email": "thomas@yahoo.com",
+      "firstName": "Thomas",
+      "lastName": "Rodgers",
+      "DoB": "02/09/1997"
     },
     {
       "userID": 3,
       "username": "Mary",
-      "password": "pass3"
+      "password": "pass3",
+      "email": "mary76@hotmail.com",
+      "firstName": "Mary",
+      "lastName": "Smith",
+      "DoB": "06/28/1976"
     }
   ]
 }

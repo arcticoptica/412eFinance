@@ -58,9 +58,9 @@ public class UserJson {
      * @throws FileNotFoundException If users.json does not exist.
      */
     public void addMockUsers() throws FileNotFoundException {
-        User u1 = new User(00001, "Steve", "pass1");
-        User u2 = new User(00002, "Thomas", "pass2");
-        User u3 = new User(00003, "Mary", "pass3");
+        User u1 = new User(00001, "steve01@gmail.com", "Steve", "pass1", "Steve", "Ryan", "11/02/1986");
+        User u2 = new User(00002, "thomas@yahoo.com", "Thomas", "pass2", "Thomas", "Rodgers", "02/09/1997");
+        User u3 = new User(00003, "mary76@hotmail.com","Mary", "pass3", "Mary", "Smith", "06/28/1976");
         userList.add(u1);
         userList.add(u2);
         userList.add(u3);

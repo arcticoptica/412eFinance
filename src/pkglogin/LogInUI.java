@@ -122,6 +122,7 @@ public class LogInUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void usernameTextEnterActionPerformed(java.awt.event.ActionEvent evt) {                                                  

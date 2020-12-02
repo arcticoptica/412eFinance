@@ -5,7 +5,6 @@
  */
 package pkgcheckbalance;
 
-import main.HomeMenuUI;
 import main.eFinanceMainController;
 import pkgpopupmenu.PopupMenu;
 
@@ -21,7 +20,7 @@ public class CheckBalanceUI extends javax.swing.JFrame {
      * Creates new form CheckBalanceUI
      */
     public CheckBalanceUI() {
-        popup = new PopupMenu();
+        this.popup = new PopupMenu(this);
         initComponents();
     }
 
@@ -186,6 +185,7 @@ public class CheckBalanceUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -214,8 +214,8 @@ public class CheckBalanceUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        //Popup menu toggle button
         if (jToggleButton1.isSelected()) {
+            this.popup.setPopupLocation(this.jToggleButton1.getLocationOnScreen());
             this.popup.getPopupMenu().setVisible(true);
         } else {
             this.popup.getPopupMenu().setVisible(false);

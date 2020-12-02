@@ -164,6 +164,7 @@ public class AutoPayUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void routingNumberTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_routingNumberTextActionPerformed

@@ -148,6 +148,12 @@ public class LogInUI extends javax.swing.JFrame {
                     if ((users.get(i).getUsername().equals(username)) && (users.get(i).getPW()).equals(password)) {
                         dispose();
                         new HomeMenuUI().setVisible(true);
+                        break;
+                    }
+                    if (!(users.get(i).getUsername().equals(username)) && !(users.get(i).getPW()).equals(password)) {
+                        if (i == users.size() - 1) {
+                            JOptionPane.showMessageDialog(this, "Username or password is incorrect");
+                        }
                     }
                 }
             } catch (FileNotFoundException ex) {

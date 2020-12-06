@@ -34,10 +34,10 @@ public class TestHarness {
         testCreateProfile();
         testContactDetails();
 
-        testEditCustomerProfile();
+        //testEditCustomerProfile();
 
         testAuthenticate();
-        testLoanOptions();
+        //testLoanOptions();
         testNewProfile();
 
         //CreateProfile Test Cases
@@ -193,40 +193,40 @@ public class TestHarness {
      * Test for EditCustomerProfile class creates an instance of the class, then
      * checks the 'getStatus' and 'editProfileInfo' methods.
      */
-    public void testEditCustomerProfile() {
-        System.out.println("Start of EditCustomerProfile Test");
-        this.editCustomer = new EditCustomerProfile();
-        HashMap<String, String> info = new HashMap<>();
-        info.put("1", "asdf");
-        info.put("2", "fdsa");
-        if (this.editCustomer.getStatus() == -1) {
-            System.out.println("getStatus: Pass");
-            this.editCustomer.editProfileInfo(info);
-            if (this.editCustomer.getStatus() == 0) {
-                System.out.println("Changes Successful");
-            } else {
-                System.out.println("Error");
-            }
-        } else {
-            System.out.println("getStatus: Failure");
-        }
-        System.out.println("[End]");
-    }
+//    public void testEditCustomerProfile() {
+//        System.out.println("Start of EditCustomerProfile Test");
+//        this.editCustomer = new EditCustomerProfile();
+//        HashMap<String, String> info = new HashMap<>();
+//        info.put("1", "asdf");
+//        info.put("2", "fdsa");
+//        if (this.editCustomer.getStatus() == -1) {
+//            System.out.println("getStatus: Pass");
+//            this.editCustomer.editProfileInfo(info);
+//            if (this.editCustomer.getStatus() == 0) {
+//                System.out.println("Changes Successful");
+//            } else {
+//                System.out.println("Error");
+//            }
+//        } else {
+//            System.out.println("getStatus: Failure");
+//        }
+//        System.out.println("[End]");
+//    }
 
     /**
      * <p>
      * Test for LoanOptions class creates an instance of the class, then checks
      * that 'getOptList' and 'getOptions' work as intended
      */
-    public void testLoanOptions() {
-        System.out.println("Start of LoanOptions Test");
-        this.loanOptions = new LoanOptions();
-        ArrayList<String> options = this.loanOptions.getOptList();
-        for (String option : options) {
-            System.out.println(option);
-        }
-        System.out.println("[End]");
-    }
+//    public void testLoanOptions() {
+//        System.out.println("Start of LoanOptions Test");
+//        this.loanOptions = new LoanOptions();
+//        ArrayList<String> options = this.loanOptions.getOptList();
+//        for (String option : options) {
+//            System.out.println(option);
+//        }
+//        System.out.println("[End]");
+//    }
 
     public void testAuthenticate() {
         System.out.println("Start of Authenticate test");

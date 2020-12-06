@@ -140,27 +140,6 @@ public class LogInUI extends javax.swing.JFrame {
         if (username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Missing field");
         } else {
-<<<<<<< HEAD
-            UserList users;
-            UserJson uj = new UserJson();
-            try {
-                uj.addMockUsers();
-                users = uj.getUserList();
-                for (int i = 0; i < users.size(); i++) {
-                    if ((users.get(i).getUsername().equals(username)) && (users.get(i).getPW()).equals(password)) {
-                        dispose();
-                        new HomeMenuUI().setVisible(true);
-                        break;
-                    }
-                    if (!(users.get(i).getUsername().equals(username)) && !(users.get(i).getPW()).equals(password)) {
-                        if (i == users.size() - 1) {
-                            JOptionPane.showMessageDialog(this, "Username or password is incorrect");
-                        }
-                    }
-                }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
-=======
             int status = this.parent.userLogIn(username, password);
             switch (status) {
                 case 1:
@@ -176,7 +155,6 @@ public class LogInUI extends javax.swing.JFrame {
                 default:
                     JOptionPane.showMessageDialog(this, "System error, please try again later.");
                     break;
->>>>>>> 3f030e6bded50ca4ff15c17278f00b9994d40633
             }
         }
     }                                           

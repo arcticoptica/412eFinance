@@ -2,97 +2,41 @@ package pkgautopayment;
 
 /**
  *
- * @author Elitza Georgieva
+ * @author Team Rho
  */
 public class AutoPayment {
     
-    private int status;
+    private final AutoPayUI autopayUI;
     
-    private String routingNumber = "";
-    private String bankAccountNumber = "";
-    private String paymentAmount;
     /**
      * Default constructor for the AutoPayment class.
      */
-    public AutoPayment(String routingNumber, String bankAccountNumber, String paymentAmount) {
-        //this.status = -1;
-        
-        this.routingNumber=routingNumber;
-        this.bankAccountNumber=bankAccountNumber;
-        this.paymentAmount=paymentAmount;
+    public AutoPayment() {
+        this.autopayUI = new AutoPayUI(this);
+        initUI();
     }
     
-     /**
-     * Gives the current routing number.
-     * @return The value of routing number.
-     */
-    public String getRoutingNumber()
-    {
-        return routingNumber;
+    private void initUI() {
+        this.autopayUI.setVisible(true);
     }
     
     /**
-     * Changes value of routing number.
-     * Set the entered value of routing number.
+     * Passes info to bank and returns success status;
+     * @param routingNumber The routing number of the chosen bank account.
+     * @param bankAccountNumber The bank account number of the chosen bank account.
+     * @param payAmount Chosen amount of money per payment.
+     * @return Status of communication with servers.
      */
-    public void setRoutingNumber(String routingNumber)
-    {
-        this.routingNumber=routingNumber;
-    }
-   
-     /**
-     * Gives the current bank account number.
-     * @return The value of bank account number.
-     */
-    public String getBankAccountNumber()
-    {
-        return bankAccountNumber;
-    }
-    
-    /**
-     * Changes value of bank account number.
-     * Set the entered value of bank account number.
-     */
-    public void setBankAccountNumber(String bankAccountNumber)
-    {
-        this.bankAccountNumber=bankAccountNumber;
-    }
-    
-     /**
-     * Gives the current amount to be withdrawn every month for automatic payment (payAmount).
-     * @return The value of the amount to be withdrawn every month for automatic payment (payAmount).
-     */
-    public String getPaymentAmount()
-    {
-        return paymentAmount;
-    }
-    
-    /**
-     * Changes value of the amount to be withdrawn every month for automatic payment (payAmount).
-     * Set the entered value of the amount to be withdrawn every month for automatic payment (payAmount).
-     */
-    public void setPaymentAmount(String payAmount)
-    {
-        this.paymentAmount=paymentAmount;
-    }
-    
-    
-    /**
-     * Passes info to system and sets the result status.
-     * @param routingNumber Information about the routing number of the chosen bank account payment.
-     * @param bankAccountNumber Information about the bank account number of the chosen bank account payment.
-     * @param payAmount Chosen amount of time for payments.
-     */
-    public void setAutoPay(String routingNumber, int bankAccountNumber, int payAmount) {
-        this.status = 0;
-    }
-    
-    /**
-     * Gives the current status.
-     * @return The value of status.
-     */
-    public int getStatus() {
-        return this.status;
+    public int setAutoPay(String routingNumber, String bankAccountNumber, String payAmount) {
+        int status = -1;
+        double routing = Double.parseDouble(routingNumber);
+        double bankAccount = Double.parseDouble(bankAccountNumber);
+        double amount = Double.parseDouble(payAmount);
+        //Communicate with bank, sending information
+        int mockCommStatus = 1;// 1 = pass, 0 = fail
+        //mock status = 1
+        status = mockCommStatus;
+        return status;
     }
     
 }

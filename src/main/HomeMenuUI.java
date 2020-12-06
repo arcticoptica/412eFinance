@@ -40,7 +40,7 @@ public class HomeMenuUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("ATZ Finance HomePage");
+        jLabel1.setText("eFinance HomePage");
 
         javax.swing.GroupLayout titlepanelLayout = new javax.swing.GroupLayout(titlepanel);
         titlepanel.setLayout(titlepanelLayout);
@@ -113,7 +113,7 @@ public class HomeMenuUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Welcome to the home view!");
+        jLabel2.setText("Welcome to the ATZ Finance eFinance application!");
 
         javax.swing.GroupLayout textpanelLayout = new javax.swing.GroupLayout(textpanel);
         textpanel.setLayout(textpanelLayout);

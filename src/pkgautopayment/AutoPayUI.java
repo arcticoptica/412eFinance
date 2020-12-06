@@ -5,46 +5,24 @@
  */
 package pkgautopayment;
 
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import main.eFinanceMainController;
+import pkgpopupmenu.PopupMenu;
 
 /**
  *
  * @author elitzageorgieva
  */
 public class AutoPayUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AutoPayUI
-     */
     
-    public int currentAutoPayment=0;
-    int selectedRow;
-    ArrayList<AutoPayment> list;
-    AutoPayment autoPayment;
-    AutoPaymentList apl=new AutoPaymentList();
+    private final AutoPayment parent;
+    private final PopupMenu popup;
     
-    /**
-    * Submit button
-    * Gets the text entered in the three fields by the user for routing number,
-    * bank account number, and payment amount and adds to the arrayList AutoPaymentList.
-    */
-    
-    public AutoPayUI(ArrayList<AutoPayment> list) {
-        this.list=list;
+    public AutoPayUI(AutoPayment parent) {
+        this.parent = parent;
+        this.popup = new PopupMenu(this);
         initComponents();
-        routingNumberText.setText(list.get(currentAutoPayment).getRoutingNumber());
-        accountNumberText.setText(list.get(currentAutoPayment).getBankAccountNumber());
-        autoPayAmountText.setText(list.get(currentAutoPayment).getPaymentAmount());
     }
-    
-         public AutoPayUI(AutoPaymentCntl autoPayCntl, int row) 
-        {
-            this.list=autoPayCntl.getList();
-            selectedRow=row;
-            //currentConcert=row;
-            autoPayment=autoPayCntl.getAutoPay(row);
-            initComponents();
-        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +42,8 @@ public class AutoPayUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         autoPayAmountText = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +80,20 @@ public class AutoPayUI extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton1.setText("Menu");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,33 +101,37 @@ public class AutoPayUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(routingNumberText)
-                                    .addComponent(accountNumberText, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                    .addComponent(autoPayAmountText))))
-                        .addGap(0, 53, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(routingNumberText)
+                            .addComponent(accountNumberText, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(autoPayAmountText))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(107, 107, 107)
                         .addComponent(submitButton)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jToggleButton1))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(routingNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -146,7 +144,9 @@ public class AutoPayUI extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(autoPayAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
-                .addComponent(submitButton)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitButton)
+                    .addComponent(jButton1))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -169,63 +169,70 @@ public class AutoPayUI extends javax.swing.JFrame {
 
     private void routingNumberTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_routingNumberTextActionPerformed
         // TODO add your handling code here:
-        
-        //The change typed in the routing number text fields in the UI is saved to the AutoPaymentList.
-        
-        String newRoutingNumber=routingNumberText.getText();
-        list.get(currentAutoPayment).setRoutingNumber(newRoutingNumber);
-        
-        apl.setAutoPaymentList(list);
-        
     }//GEN-LAST:event_routingNumberTextActionPerformed
 
     private void accountNumberTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountNumberTextActionPerformed
         // TODO add your handling code here:
-        
-        //The change typed in the account number text fields in the UI is saved to the AutoPaymentList.
-        
-        String newBankAccountNumber=accountNumberText.getText();
-        list.get(currentAutoPayment).setBankAccountNumber(newBankAccountNumber);
-        
-        apl.setAutoPaymentList(list);
-        
     }//GEN-LAST:event_accountNumberTextActionPerformed
 
     private void autoPayAmountTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoPayAmountTextActionPerformed
         // TODO add your handling code here:
-        
-        //The change typed in the payment amount text fields in the UI is saved to the AutoPaymentList.
-        
-        String newPaymentAmount=autoPayAmountText.getText();
-        list.get(currentAutoPayment).setPaymentAmount(newPaymentAmount);
-        
-        apl.setAutoPaymentList(list);
     }//GEN-LAST:event_autoPayAmountTextActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
-        
-        //The changes typed in the above text fields in the UI are saved to the AutoPaymentList.
-        
-            String newRoutingNumber=routingNumberText.getText();
-            String newBankAccountNumber=accountNumberText.getText();
-            String newPaymentAmount=autoPayAmountText.getText();
-            
-            list.get(currentAutoPayment).setRoutingNumber(newRoutingNumber);
-            list.get(currentAutoPayment).setBankAccountNumber(newBankAccountNumber);
-            list.get(currentAutoPayment).setPaymentAmount(newPaymentAmount);
-            
-            apl.setAutoPaymentList(list);
+        String routing = routingNumberText.getText();
+        String account = accountNumberText.getText();
+        String amount = autoPayAmountText.getText();
+        if (routing.equals("") || account.equals("") || amount.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please fill out all fields.");
+        } else {
+            try {
+                int status = this.parent.setAutoPay(routing, account, amount);
+                switch (status) {
+                    case 1:
+                        JOptionPane.showMessageDialog(this, "Submission successful.");
+                        break;
+                    case 0:
+                        JOptionPane.showMessageDialog(this, "Submission failed.");
+                        break;
+                    case -1:
+                        JOptionPane.showMessageDialog(this, "System error, please try again later.");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(this, "System error, please try again later.");
+                        break;
+                }
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Please enter valid numbers.");
+            }
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        eFinanceMainController.showMainMenu();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        if (jToggleButton1.isSelected()) {
+            this.popup.setPopupLocation(this.jToggleButton1.getLocationOnScreen());
+            this.popup.getPopupMenu().setVisible(true);
+        } else {
+            this.popup.getPopupMenu().setVisible(false);
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField accountNumberText;
     public javax.swing.JTextField autoPayAmountText;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton jToggleButton1;
     public javax.swing.JTextField routingNumberText;
     public javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables

@@ -7,7 +7,6 @@ import pkgcreateprofile.CreateProfile;
 import pkgeditprofile.EditCustomerProfile;
 import pkgloanoptions.LoanOptions;
 import pkglogin.Authenticate;
-import pkglogin.NewProfile;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,7 +20,6 @@ public class TestHarness {
     private CheckBalance checkBal;
     private EditCustomerProfile editCustomer;
     private Authenticate userAuth;
-    private NewProfile userProfile;
     private LoanOptions loanOptions;
 
     /**
@@ -35,14 +33,13 @@ public class TestHarness {
         testContactDetails();
 
         //testEditCustomerProfile();
-
         testAuthenticate();
         //testLoanOptions();
-        testNewProfile();
+        //testNewProfile();
 
         //CreateProfile Test Cases
         //Check for valid email
-        CreateProfile profile1 = new CreateProfile("john123@gmail.com", "password1", "John", "Smith", "08/09/1987", 1);
+        CreateProfile profile1 = new CreateProfile("john123@gmail.com", "username1", "password1", "John", "Smith", "08/09/1987", 1);
         System.out.println(profile1.toString());
 
         //Get Email
@@ -121,9 +118,7 @@ public class TestHarness {
      * Test for AutoPayment class creates an instance of the class, then checks
      * the 'getStatus' and 'setAutoPay' methods.
      */
-    
-   
-     private void testAutoPayment() {
+    private void testAutoPayment() {
         System.out.println("Start of AutoPayment test");
         this.autoPay = new AutoPayment();
         if (true) {
@@ -133,7 +128,6 @@ public class TestHarness {
         }
         System.out.println("[End]");
     }
-   
 
     /**
      * Test for CheckBalance controller class.
@@ -157,8 +151,8 @@ public class TestHarness {
         System.out.println("Start of CreateProfile test");
         ArrayList<CreateProfile> profiles = new ArrayList<>();
 
-        CreateProfile profile1 = new CreateProfile("john123@gmail.com", "password1", "John", "Smith", "08/09/1987", 1);
-        CreateProfile profile2 = new CreateProfile("jane456@gmail.com", "password2", "Jane", "Doe", "12/08/1992", 1);
+        CreateProfile profile1 = new CreateProfile("john123@gmail.com", "username1", "password1", "John", "Smith", "08/09/1987", 1);
+        CreateProfile profile2 = new CreateProfile("jane456@gmail.com", "username2", "password2", "Jane", "Doe", "12/08/1992", 1);
 
         profiles.add(profile1);
         profiles.add(profile2);
@@ -212,7 +206,6 @@ public class TestHarness {
 //        }
 //        System.out.println("[End]");
 //    }
-
     /**
      * <p>
      * Test for LoanOptions class creates an instance of the class, then checks
@@ -227,7 +220,6 @@ public class TestHarness {
 //        }
 //        System.out.println("[End]");
 //    }
-
     public void testAuthenticate() {
         System.out.println("Start of Authenticate test");
         this.userAuth = new Authenticate();
@@ -240,7 +232,8 @@ public class TestHarness {
         }
         System.out.println("[End]");
     }
-
+}
+/*
     public void testNewProfile() {
         System.out.println("Start of NewProfile test");
         this.userProfile = new NewProfile();
@@ -254,4 +247,4 @@ public class TestHarness {
         System.out.println("[End]");
     }
 }
-
+*/

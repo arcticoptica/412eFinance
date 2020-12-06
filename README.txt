@@ -16,5 +16,7 @@ Refactored Code:
 ->AuthenticateUI: Login data processing moved to controller
 ->Authenticate: Handles login process, is now eFinanceMainController's call target
 
--> NewProfile: removed, merged with CreateProfile
--> CreateProfile: consolidated with Newprofile to remove duplicate code
+->NewProfile: removed, merged with CreateProfile
+->CreateProfile: consolidated with Newprofile to remove duplicate code
+
+->TestHarness: changes made to reflect refactored code

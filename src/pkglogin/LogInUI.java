@@ -122,6 +122,7 @@ public class LogInUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void usernameTextEnterActionPerformed(java.awt.event.ActionEvent evt) {                                                  
@@ -138,7 +139,7 @@ public class LogInUI extends javax.swing.JFrame {
         if (username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Missing field");
         } else {
-            UserList users = new UserList();
+            UserList users;
             UserJson uj = new UserJson();
             try {
                 uj.addMockUsers();
@@ -149,25 +150,11 @@ public class LogInUI extends javax.swing.JFrame {
                         new HomeMenuUI().setVisible(true);
                     }
                 }
-                // for(int i=0;i < users.size(); i++) {
-
-                //  System.out.println(u.toString());
-                //  }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            // users.printResults();
         }
-        //  System.out.println("list"+uj.getUserList());
-        // users=uj.getUserList();
-        // users.printResults();
-
     }                                           
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify                     
     public javax.swing.JButton LoginButton;

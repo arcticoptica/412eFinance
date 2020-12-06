@@ -1,8 +1,5 @@
 package pkgcheckbalance;
 
-import java.awt.event.ActionEvent;
-import main.HomeMenuUI;
-
 /**
  *
  * @author Team Rho
@@ -26,9 +23,8 @@ public class CheckBalance {
         retrieveSessionID();
         this.balanceMain = new CheckBalanceMain();
         this.balanceUpcoming = new CheckBalanceUpcoming();
-        this.balanceUI = new CheckBalanceUI(this);
+        this.balanceUI = new CheckBalanceUI();
         initUI();
-        this.balanceUI.setVisible(true);
     }
     
     /**
@@ -58,19 +54,16 @@ public class CheckBalance {
     }
     
     /**
-     * Sets action listener for CheckBalanceUI's backButton and fills in info.
+     * Fills in info for CheckBalanceUI and displays it.
      */
     private void initUI() {
-        balanceUI.setBackButtonListener((ActionEvent e) -> {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    new HomeMenuUI().setVisible(true);
-                }
-            });
-            this.balanceUI.dispose();
-        });
-        balanceUI.setContents(String.valueOf(getBalance()), String.valueOf(getUpcoming()));
+        //TODO fill info
+        balanceUI.setCurrentField(String.valueOf(getBalance()));
+        balanceUI.setUpcomingField(String.valueOf(getUpcoming()));
+        balanceUI.setMinimumField("");
+        balanceUI.setStatusField("");
+        balanceUI.setPlanField("");
+        this.balanceUI.setVisible(true);
     }
     
 }

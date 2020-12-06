@@ -1,6 +1,9 @@
 package pkgloanoptions;
 
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 //import java.util.List;
 
 /**
@@ -21,10 +24,16 @@ public class LoanOptions {
     /**
      * Retrieves list of loan options and sets optList.
      */
-    private void retrieveList() {
-       //what is best way to retrieve in future? Maybe utilize a text file if we have 5+ loan options
-        optList.add("opt1");
-        optList.add("opt2");
+    private void retrieveList() throws FileNotFoundException {
+       BufferedReader readFile = new BufferedReader(new FileReader("loanOpt.txt"));
+       
+       String line = readFile.readLine();
+       while (line != null) {
+           optList.add(line);
+           line = readFile.readLine();
+       }
+       
+       readFile.close();
     }
     
     /**

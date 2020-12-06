@@ -69,7 +69,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ATZ Finance HomePage"/>
+            <Property name="text" type="java.lang.String" value="eFinance HomePage"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -162,7 +162,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Welcome to the home view!"/>
+            <Property name="text" type="java.lang.String" value="Welcome to the ATZ Finance eFinance application!"/>
           </Properties>
         </Component>
       </SubComponents>

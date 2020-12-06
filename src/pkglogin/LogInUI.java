@@ -5,22 +5,23 @@
  */
 package pkglogin;
 
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import main.HomeMenuUI;
+import main.eFinanceMainController;
 
 /**
  *
  * @author elitzageorgieva
  */
 public class LogInUI extends javax.swing.JFrame {
-
+    
+    private final Authenticate parent;
+    
     /**
      * Creates new form LogInUI
+     * @param parent Parent controller that instantiates this class.
      */
-    public LogInUI() {
+    public LogInUI(Authenticate parent) {
+        this.parent = parent;
         initComponents();
     }
 
@@ -139,6 +140,7 @@ public class LogInUI extends javax.swing.JFrame {
         if (username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Missing field");
         } else {
+<<<<<<< HEAD
             UserList users;
             UserJson uj = new UserJson();
             try {
@@ -158,6 +160,23 @@ public class LogInUI extends javax.swing.JFrame {
                 }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
+=======
+            int status = this.parent.userLogIn(username, password);
+            switch (status) {
+                case 1:
+                    eFinanceMainController.showMainMenu();
+                    this.dispose();
+                    break;
+                case 0:
+                    JOptionPane.showMessageDialog(this, "Incorrect username or password.");
+                    break;
+                case -1:
+                    JOptionPane.showMessageDialog(this, "System error, please try again later.");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "System error, please try again later.");
+                    break;
+>>>>>>> 3f030e6bded50ca4ff15c17278f00b9994d40633
             }
         }
     }                                           

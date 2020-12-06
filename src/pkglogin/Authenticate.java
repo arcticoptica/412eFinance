@@ -1,35 +1,52 @@
 package pkglogin;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Team Rho
  */
 public class Authenticate {
     
-    private int status;
+    private final LogInUI loginUI;
     
     /**
      * Default constructor for the Authenticate class.
      */
     public Authenticate() {
-        this.status = -1;
+        this.loginUI = new LogInUI(this);
+        initUI();
+    }
+    
+    private void initUI() {
+        this.loginUI.setVisible(true);
     }
     
     /**
      * Checks login credentials and sets the result status.
-     * @param email Is the account identifier.
+     * @param username Is the account identifier.
      * @param pw Is the account password.
+     * @return 0 for login fail, 1 for login success, -1 for error.
      */
-    public void userLogIn(String email, String pw) {
-        this.status = 0;
-    }
-    
-    /**
-     * Gets the current status.
-     * @return The value of status.
-     */
-    public int getStatus() {
-        return this.status;
+    public int userLogIn(String username, String pw) {
+        int status = -1;
+        UserList users;
+        UserJson uj = new UserJson();
+        try {
+            uj.addMockUsers();
+            users = uj.getUserList();
+            status = 0;
+            for (int i = 0; i < users.size(); i++) {
+                if ((users.get(i).getUsername().equals(username)) && (users.get(i).getPW()).equals(pw)) {
+                    status = 1;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Authenticate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
     }
     
 }

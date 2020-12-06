@@ -1,8 +1,8 @@
 package main;
 
-import pkgautopayment.AutoPaymentCntl;
+import pkgautopayment.AutoPayment;
 import pkgcheckbalance.CheckBalance;
-import pkglogin.LogInUI;
+import pkglogin.Authenticate;
 
 /**
  * 
@@ -10,8 +10,9 @@ import pkglogin.LogInUI;
  */
 public class eFinanceMainController {
     
+    static Authenticate authenticate;
     static CheckBalance checkBalance;
-    static AutoPaymentCntl autoPay;
+    static AutoPayment autoPay;
     
     /**
      * Default constructor for eFinanceMainController class.
@@ -21,7 +22,7 @@ public class eFinanceMainController {
         System.out.println("For testing -> (case sensitive) Username: Steve, Password: pass1");
         
         java.awt.EventQueue.invokeLater(() -> {
-            new LogInUI().setVisible(true);
+            eFinanceMainController.authenticate = new Authenticate();
         });
     }
     
@@ -39,7 +40,7 @@ public class eFinanceMainController {
     
     public static void showAutoPayment() {
         java.awt.EventQueue.invokeLater(() -> {
-            eFinanceMainController.autoPay = new AutoPaymentCntl();
+            eFinanceMainController.autoPay = new AutoPayment();
         });
     }
 }

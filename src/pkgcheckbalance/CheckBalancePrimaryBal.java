@@ -4,14 +4,14 @@ package pkgcheckbalance;
  *
  * @author Team Rho
  */
-public class CheckBalanceMain {
+public class CheckBalancePrimaryBal {
 
     private double accountBalance;
     
     /**
-     * Default constructor for the CheckBalanceMain class.
+     * Default constructor for the CheckBalancePrimaryBal class.
      */
-    public CheckBalanceMain() {
+    public CheckBalancePrimaryBal() {
         this.accountBalance = -1;
     }
     

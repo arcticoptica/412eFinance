@@ -44,6 +44,7 @@ public class AutoPayUI extends javax.swing.JFrame {
         submitButton = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +95,13 @@ public class AutoPayUI extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Retrieve Existing");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,10 +126,13 @@ public class AutoPayUI extends javax.swing.JFrame {
                             .addComponent(autoPayAmountText))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addGap(107, 107, 107)
-                        .addComponent(submitButton)))
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(submitButton)
+                        .addGap(36, 36, 36)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -146,7 +157,8 @@ public class AutoPayUI extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitButton)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -195,9 +207,6 @@ public class AutoPayUI extends javax.swing.JFrame {
                     case 0:
                         JOptionPane.showMessageDialog(this, "Submission failed.");
                         break;
-                    case -1:
-                        JOptionPane.showMessageDialog(this, "System error, please try again later.");
-                        break;
                     default:
                         JOptionPane.showMessageDialog(this, "System error, please try again later.");
                         break;
@@ -223,10 +232,18 @@ public class AutoPayUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int status = this.parent.getExistingAutoPay();
+        if (status == 0) {
+            JOptionPane.showMessageDialog(this, "No existing auto pay found.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField accountNumberText;
     public javax.swing.JTextField autoPayAmountText;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -236,4 +253,14 @@ public class AutoPayUI extends javax.swing.JFrame {
     public javax.swing.JTextField routingNumberText;
     public javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
+    
+    public void setRoutingField(String str) {
+        this.routingNumberText.setText(str);
+    }
+    public void setAccountField(String str) {
+        this.accountNumberText.setText(str);
+    }
+    public void setAmountField(String str) {
+        this.autoPayAmountText.setText(str);
+    }
 }

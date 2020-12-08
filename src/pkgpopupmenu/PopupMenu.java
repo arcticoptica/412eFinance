@@ -17,7 +17,7 @@ public class PopupMenu {
     private final JMenuItem home;
     private final JMenuItem autoPay;
     private final JMenuItem checkBal;
-    private final JMenuItem profile;
+    private final JMenuItem manualPay;
     private final JMenuItem contact;
     private final JFrame parent;
     
@@ -30,13 +30,13 @@ public class PopupMenu {
         this.home = new JMenuItem("Home");
         this.autoPay = new JMenuItem("Auto Payment");
         this.checkBal = new JMenuItem("Account Balance");
-        this.profile = new JMenuItem("Profile");
+        this.manualPay = new JMenuItem("Manual Payment");
         this.contact = new JMenuItem("Contact Us");
         this.parent = parent;
         menu.add(home);
-        menu.add(autoPay);
         menu.add(checkBal);
-        menu.add(profile);
+        menu.add(autoPay);
+        menu.add(manualPay);
         menu.add(contact);
         initAction();
     }
@@ -57,11 +57,12 @@ public class PopupMenu {
             eFinanceMainController.showCheckBalance();
             cleanUp();
         });
-        profile.addActionListener((ActionEvent e) -> {
-            //redirect to editProfile UI
+        manualPay.addActionListener((ActionEvent e) -> {
+            //redirect to manual pay UI
         });
         contact.addActionListener((ActionEvent e) -> {
-            //redirect to contact UI
+            eFinanceMainController.showContactDetails();
+            cleanUp();
         });
     }
     

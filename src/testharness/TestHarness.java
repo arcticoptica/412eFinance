@@ -83,32 +83,17 @@ public class TestHarness {
         System.out.println();
 
         //ContactDetails Test Cases
-        ContactDetails contact1 = new ContactDetails("18001234567", "atzFinance@gmail.com", "1 Finance Road, Milwaukee, WI, 53201");
+        ContactDetails contact1 = new ContactDetails();
         System.out.println(profile1.toString());
 
         //Get ATZ phone number
-        System.out.println("ATZ Finance Phone Number: " + contact1.getATZphoneNumber());
+        System.out.println("ATZ Finance Phone Number: " + contact1.getPhoneNumber());
 
         //get ATZ email
-        System.out.println("ATZ Finance Email: " + contact1.getATZemail());
+        System.out.println("ATZ Finance Email: " + contact1.getEmail());
 
         //get ATZ address
-        System.out.println("ATZ Finance Address: " + contact1.getATZaddress());
-
-        //change ATZ phone number
-        contact1.setATZphoneNumber("18002223333");
-        System.out.println(contact1.toString());
-        System.out.println();
-
-        //change ATZ email
-        contact1.setATZemail("efinance@gmail.com");
-        System.out.println(contact1.toString());
-        System.out.println();
-
-        //change ATZ address
-        contact1.setATZaddress("100 Finance Road, Milwaukee, WI, 53202");
-        System.out.println(contact1.toString());
-        System.out.println();
+        System.out.println("ATZ Finance Address: " + contact1.getAddress());
 
     }
 
@@ -167,16 +152,6 @@ public class TestHarness {
     public void testContactDetails() {
         System.out.println("");
         System.out.println("Start of ContactDetails test");
-
-        ArrayList<ContactDetails> contacts = new ArrayList<>();
-
-        ContactDetails contact1 = new ContactDetails("18001234567", "atzFinance@gmail.com", "1 Finance Road, Milwaukee, WI, 53201");
-
-        contacts.add(contact1);
-
-        for (ContactDetails contact : contacts) {
-            System.out.print(contact);
-        }
         System.out.println("");
         System.out.println("[End]");
     }

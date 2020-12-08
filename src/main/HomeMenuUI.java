@@ -169,7 +169,8 @@ public class HomeMenuUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ManualPaymentButtonActionPerformed
 
     private void ContactInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactInformationButtonActionPerformed
-        // TODO add your handling code here:
+        eFinanceMainController.showContactDetails();
+        this.dispose();
     }//GEN-LAST:event_ContactInformationButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

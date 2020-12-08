@@ -39,7 +39,7 @@ public class LogInUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         usernameTextEnter = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        passwordTextEnter = new javax.swing.JTextField();
+        passwordTextEnter = new javax.swing.JPasswordField();
         LoginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -136,7 +136,7 @@ public class LogInUI extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
         String username = usernameTextEnter.getText();
-        String password = passwordTextEnter.getText();
+        String password = String.valueOf(passwordTextEnter.getPassword());
         if (username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Missing field");
         } else {
@@ -165,7 +165,7 @@ public class LogInUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField passwordTextEnter;
+    public javax.swing.JPasswordField passwordTextEnter;
     public javax.swing.JTextField usernameTextEnter;
     // End of variables declaration                   
 }

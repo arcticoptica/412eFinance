@@ -6,90 +6,55 @@ package pkgcontact;
  */
 public class ContactDetails {
     
-    private String ATZphoneNumber = "";
-    private String ATZemail = "";
-    private String ATZaddress = "";
+    private String ATZphoneNumber;
+    private String ATZemail;
+    private String ATZaddress;
+    private final ContactDetailsUI contactUI;
     
     /**
      * Default constructor for the ContactDetails class.
      */
-    public ContactDetails(String ATZphoneNumber, String ATZemail, String ATZaddress) {
-        this.ATZphoneNumber = ATZphoneNumber;
-        this.ATZemail=ATZemail;
-        this.ATZaddress=ATZaddress;
+    public ContactDetails() {
+        this.ATZphoneNumber = "";
+        this.ATZemail = "";
+        this.ATZaddress = "";
+        this.contactUI = new ContactDetailsUI();
+        initUI();
     }
     
+    private void initUI() {
+        this.contactUI.setPhoneField(getPhoneNumber());
+        this.contactUI.setEmailField(getEmail());
+        this.contactUI.setAddressField(getAddress());
+        this.contactUI.setVisible(true);
+    }
     
     /**
-     * Gives the current ATZ phone number.
+     * Retrieves the ATZ phone number, then returns it.
      * @return The value of ATZ phone number.
      */
-    public String getATZphoneNumber()
-    {
+    public String getPhoneNumber() {
+        //Mock phone number
+        this.ATZphoneNumber = "1-800-111-2222";
         return ATZphoneNumber;
     }
     
     /**
-     * Changes value of ATZ phone number.
-     * Set the entered value of phone number.
-     */
-    public void setATZphoneNumber(String ATZphoneNumber)
-    {
-        this.ATZphoneNumber=ATZphoneNumber;
-    }
-    
-    /**
-     * Gives the current ATZ email.
+     * Retrieves the ATZ email, then returns it.
      * @return The value of ATZ email.
      */
-    public String getATZemail()
-    {
+    public String getEmail() {
+        this.ATZemail = "atzfinance@email.com";
         return ATZemail;
     }
     
     /**
-     * Changes value of ATZ email.
-     * Set the entered value of ATZ email.
-     */
-    public void setATZemail(String ATZemail)
-    {
-        this.ATZemail=ATZemail;
-    }
-    
-    /**
-     * Gives the current ATZ address.
+     * Retrieves the ATZ office address, then returns it.
      * @return The value of ATZ address.
      */
-    public String getATZaddress()
-    {
+    public String getAddress() {
+        this.ATZaddress = "10 Some Street, New York";
         return ATZaddress;
     }
-    
-    /**
-     * Changes value of ATZ address.
-     * Set the entered value of ATZ address.
-     */
-    public void setATZaddress(String ATZaddress)
-    {
-        this.ATZaddress=ATZaddress;
-    }
-    
-    
-    
-    /**
-     * Retrieves contact information and sets contactInfo.
-     */
-    //private void retrieveContactInfo() {
-    //    this.contactInfo = "";
-    //}
-    
-    /**
-     * Calls method to update contactInfo, then returns the string.
-     * @return A string containing contact information.
-     */
-    //public String getContactInfo() {
-      //  retrieveContactInfo();
-       // return this.contactInfo;
-    //}
     
 }

@@ -2,6 +2,7 @@ package main;
 
 import pkgautopayment.AutoPayment;
 import pkgcheckbalance.CheckBalance;
+import pkgcontact.ContactDetails;
 import pkglogin.Authenticate;
 
 /**
@@ -13,6 +14,7 @@ public class eFinanceMainController {
     static Authenticate authenticate;
     static CheckBalance checkBalance;
     static AutoPayment autoPay;
+    static ContactDetails contactDetails;
     
     /**
      * Default constructor for eFinanceMainController class.
@@ -41,6 +43,12 @@ public class eFinanceMainController {
     public static void showAutoPayment() {
         java.awt.EventQueue.invokeLater(() -> {
             eFinanceMainController.autoPay = new AutoPayment();
+        });
+    }
+    
+    public static void showContactDetails() {
+        java.awt.EventQueue.invokeLater(() -> {
+            eFinanceMainController.contactDetails = new ContactDetails();
         });
     }
 }

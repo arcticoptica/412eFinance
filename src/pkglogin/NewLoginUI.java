@@ -5,16 +5,23 @@
  */
 package pkglogin;
 
+import javax.swing.JOptionPane;
+import main.eFinanceMainController;
+
 /**
  *
  * @author mrr17
  */
 public class NewLoginUI extends javax.swing.JFrame {
 
+    private final Authenticate parent;
+    
     /**
      * Creates new form NewLoginUI
+     * @param parent Parent controller that instantiates this class.
      */
-    public NewLoginUI() {
+    public NewLoginUI(Authenticate parent) {
+        this.parent = parent;
         initComponents();
     }
 
@@ -32,9 +39,9 @@ public class NewLoginUI extends javax.swing.JFrame {
         JLabel2 = new javax.swing.JLabel();
         usernameTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        passwordTextField = new javax.swing.JTextField();
         createProfileButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
+        passwordTextField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,12 +58,6 @@ public class NewLoginUI extends javax.swing.JFrame {
 
         jLabel2.setText("Password:");
 
-        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTextFieldActionPerformed(evt);
-            }
-        });
-
         createProfileButton.setText("Create Profile");
         createProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +72,12 @@ public class NewLoginUI extends javax.swing.JFrame {
             }
         });
 
+        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -81,20 +88,20 @@ public class NewLoginUI extends javax.swing.JFrame {
                     .addComponent(JLabel2)
                     .addComponent(jLabel2))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 98, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(passwordTextField))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(createProfileButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(loginButton)
+                .addGap(61, 61, 61))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(127, 127, 127))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(createProfileButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(loginButton)
-                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,52 +141,38 @@ public class NewLoginUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
-    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextFieldActionPerformed
-
     private void createProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProfileButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_createProfileButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        String username = usernameTextField.getText();
+        String password = String.valueOf(passwordTextField.getPassword());
+        if (username.equals("") || password.equals("")) {
+            JOptionPane.showMessageDialog(this, "Missing field");
+        } else {
+            int status = this.parent.userLogIn(username, password);
+            switch (status) {
+                case 1:
+                    eFinanceMainController.showMainMenu();
+                    this.dispose();
+                    break;
+                case 0:
+                    JOptionPane.showMessageDialog(this, "Incorrect username or password.");
+                    break;
+                case -1:
+                    JOptionPane.showMessageDialog(this, "System error, please try again later.");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "System error, please try again later.");
+                    break;
+            }
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewLoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewLoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewLoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewLoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewLoginUI().setVisible(true);
-            }
-        });
-    }
+    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel JLabel2;
@@ -188,7 +181,7 @@ public class NewLoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JButton loginButton;
-    public javax.swing.JTextField passwordTextField;
+    private javax.swing.JPasswordField passwordTextField;
     public javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }

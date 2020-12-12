@@ -10,18 +10,18 @@ import java.util.logging.Logger;
  */
 public class Authenticate {
     
-    private final LogInUI loginUI;
+    private final NewLoginUI newloginUI;
     
     /**
      * Default constructor for the Authenticate class.
      */
     public Authenticate() {
-        this.loginUI = new LogInUI(this);
+        this.newloginUI = new NewLoginUI(this);
         initUI();
     }
     
     private void initUI() {
-        this.loginUI.setVisible(true);
+        this.newloginUI.setVisible(true);
     }
     
     /**

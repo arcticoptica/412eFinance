@@ -25,6 +25,10 @@ public class eFinanceMainController {
         System.out.println("Welcome to Team Rho's eFinance app");
         System.out.println("For testing -> (case sensitive) Username: Steve, Password: pass1");
         
+        showLogin();
+    }
+    
+    public static void showLogin() {
         java.awt.EventQueue.invokeLater(() -> {
             eFinanceMainController.authenticate = new Authenticate();
         });

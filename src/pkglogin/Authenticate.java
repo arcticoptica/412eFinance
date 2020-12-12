@@ -48,8 +48,7 @@ public class Authenticate {
         }
         return status;
     }
-    
-    public int newUser(String firstName, String lastName, String dob, String address, String phoneNumber, String email) {
+    public int newUser(String username, String password, String dob, String address, String phoneNumber, String email) {
         int status = -1;
         UserList users;
         UserJson uj = new UserJson();
@@ -58,8 +57,9 @@ public class Authenticate {
             users = uj.getUserList();
             status = 0;
             for (int i = 0; i < users.size(); i++) {
-              //  if((users.get(i).equals()
-
+                if ((users.get(i).getUsername().equals(username)) || (users.get(i).getPW()).equals(password)) {
+                    status=-1;
+                }
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Authenticate.class.getName()).log(Level.SEVERE, null, ex);

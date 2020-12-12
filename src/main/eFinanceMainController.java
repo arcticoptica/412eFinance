@@ -3,6 +3,7 @@ package main;
 import pkgautopayment.AutoPayment;
 import pkgcheckbalance.CheckBalance;
 import pkgcontact.ContactDetails;
+import pkgcreateprofile.CreateProfile;
 import pkglogin.Authenticate;
 import pkgmanualpay.ManualPay;
 
@@ -17,6 +18,7 @@ public class eFinanceMainController {
     static AutoPayment autoPay;
     static ManualPay manualPay;
     static ContactDetails contactDetails;
+    static CreateProfile createProfile;
     
     /**
      * Default constructor for eFinanceMainController class.
@@ -61,6 +63,12 @@ public class eFinanceMainController {
     public static void showContactDetails() {
         java.awt.EventQueue.invokeLater(() -> {
             eFinanceMainController.contactDetails = new ContactDetails();
+        });
+    }
+    
+    public static void showCreateProfile() {
+        java.awt.EventQueue.invokeLater(() -> {
+            eFinanceMainController.createProfile = new CreateProfile();
         });
     }
 }

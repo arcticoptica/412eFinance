@@ -5,19 +5,19 @@
  */
 package pkgcreateprofile;
 import javax.swing.JOptionPane;
-import pkglogin.Authenticate;
-import pkglogin.User;
+import main.eFinanceMainController;
 
 /**
  *
  * @author mrr17
  */
 public class CreateProfileUI extends javax.swing.JFrame {
-    private final Authenticate parent;
+    private final CreateProfile parent;
     /**
      * Creates new form CreateProfileUI
+     * @param parent Parent controller that instantiates this class.
      */
-    public CreateProfileUI(Authenticate parent) {
+    public CreateProfileUI(CreateProfile parent) {
         this.parent = parent;
         initComponents();
     }
@@ -50,6 +50,7 @@ public class CreateProfileUI extends javax.swing.JFrame {
         usernameTextFIeld = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         passwordTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,12 +128,21 @@ public class CreateProfileUI extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 157, Short.MAX_VALUE)
+                .addGap(0, 84, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addComponent(createProfileButton)
                 .addGap(143, 143, 143))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -211,7 +221,9 @@ public class CreateProfileUI extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(createProfileButton)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createProfileButton)
+                    .addComponent(jButton1))
                 .addGap(21, 21, 21))
         );
 
@@ -227,6 +239,7 @@ public class CreateProfileUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
@@ -247,15 +260,16 @@ public class CreateProfileUI extends javax.swing.JFrame {
         String username = usernameTextFIeld.getText();
         String password = passwordTextField.getText();
         if (firstName.equals("") || lastName.equals("") || dob.equals("") || address.equals("") || phoneNumber.equals("") || email.equals("") || username.equals("") || password.equals("")) {
-            JOptionPane.showMessageDialog(this, "Missing field");
+            JOptionPane.showMessageDialog(this, "Fields are missing info.");
         } else {
             //User newUser = new User(0005, firstName, lastName, dob, address, phoneNumber, email);
             int status = this.parent.newUser(username, password, dob, address, phoneNumber, email);
             if (status == -1) {
                 JOptionPane.showMessageDialog(this, "Sorry this username/password already exists");
             } else {
-                 eFinanceMainController.showMainMenu();
-                 this.dispose();
+                JOptionPane.showMessageDialog(this, "Profile successfully created.");
+                eFinanceMainController.showMainMenu();
+                this.dispose();
             }
         }
     }//GEN-LAST:event_createProfileButtonActionPerformed
@@ -284,12 +298,18 @@ public class CreateProfileUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextFIeldActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        eFinanceMainController.showLogin();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressTextField;
     public javax.swing.JButton createProfileButton;
     public javax.swing.JTextField dobTextField;
     public javax.swing.JTextField emailTextField;
     public javax.swing.JTextField firstNameTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

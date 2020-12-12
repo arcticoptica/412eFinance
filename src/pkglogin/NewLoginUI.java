@@ -143,7 +143,8 @@ public class NewLoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
     private void createProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProfileButtonActionPerformed
-        // TODO add your handling code here:
+        eFinanceMainController.showCreateProfile();
+        this.dispose();
     }//GEN-LAST:event_createProfileButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed

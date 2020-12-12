@@ -244,11 +244,19 @@ public class CreateProfileUI extends javax.swing.JFrame {
         String address = addressTextField.getText();
         String phoneNumber = phoneNumberTextField.getText();
         String email = emailTextField.getText();
-        if (firstName.equals("") || lastName.equals("") || dob.equals("") || address.equals("") || phoneNumber.equals("") || email.equals("")) {
+        String username = usernameTextFIeld.getText();
+        String password = passwordTextField.getText();
+        if (firstName.equals("") || lastName.equals("") || dob.equals("") || address.equals("") || phoneNumber.equals("") || email.equals("") || username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Missing field");
         } else {
-            User newUser = new User(0005, firstName, lastName, dob, address, phoneNumber, email);
-            int status = this.parent.newUser(firstName, lastName, dob, address, phoneNumber, email);
+            //User newUser = new User(0005, firstName, lastName, dob, address, phoneNumber, email);
+            int status = this.parent.newUser(username, password, dob, address, phoneNumber, email);
+            if (status == -1) {
+                JOptionPane.showMessageDialog(this, "Sorry this username/password already exists");
+            } else {
+                 eFinanceMainController.showMainMenu();
+                 this.dispose();
+            }
         }
     }//GEN-LAST:event_createProfileButtonActionPerformed
 

@@ -49,4 +49,23 @@ public class Authenticate {
         return status;
     }
     
+    public int newUser(String firstName, String lastName, String dob, String address, String phoneNumber, String email) {
+        int status = -1;
+        UserList users;
+        UserJson uj = new UserJson();
+        try {
+            uj.addMockUsers();
+            users = uj.getUserList();
+            status = 0;
+            for (int i = 0; i < users.size(); i++) {
+              //  if((users.get(i).equals()
+
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Authenticate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
+    }
+
+    
 }

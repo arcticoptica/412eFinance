@@ -58,7 +58,8 @@ public class PopupMenu {
             cleanUp();
         });
         manualPay.addActionListener((ActionEvent e) -> {
-            //redirect to manual pay UI
+            eFinanceMainController.showManualPayment();
+            cleanUp();
         });
         contact.addActionListener((ActionEvent e) -> {
             eFinanceMainController.showContactDetails();

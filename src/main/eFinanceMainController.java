@@ -4,6 +4,7 @@ import pkgautopayment.AutoPayment;
 import pkgcheckbalance.CheckBalance;
 import pkgcontact.ContactDetails;
 import pkglogin.Authenticate;
+import pkgmanualpay.ManualPayUI;
 
 /**
  * 
@@ -14,6 +15,7 @@ public class eFinanceMainController {
     static Authenticate authenticate;
     static CheckBalance checkBalance;
     static AutoPayment autoPay;
+    static ManualPayUI manualPay;
     static ContactDetails contactDetails;
     
     /**
@@ -43,6 +45,12 @@ public class eFinanceMainController {
     public static void showAutoPayment() {
         java.awt.EventQueue.invokeLater(() -> {
             eFinanceMainController.autoPay = new AutoPayment();
+        });
+    }
+    
+    public static void showManualPayment() {
+        java.awt.EventQueue.invokeLater(() -> {
+            eFinanceMainController.manualPay = new ManualPayUI();
         });
     }
     

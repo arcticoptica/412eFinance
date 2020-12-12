@@ -165,7 +165,8 @@ public class HomeMenuUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBalanceButtonActionPerformed
 
     private void ManualPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManualPaymentButtonActionPerformed
-        // TODO add your handling code here:
+        eFinanceMainController.showManualPayment();
+        this.dispose();
     }//GEN-LAST:event_ManualPaymentButtonActionPerformed
 
     private void ContactInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactInformationButtonActionPerformed

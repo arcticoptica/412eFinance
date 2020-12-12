@@ -2,13 +2,9 @@ package testharness;
 
 import pkgautopayment.AutoPayment;
 import pkgcheckbalance.CheckBalance;
-import pkgcontact.ContactDetails;
 import pkgcreateprofile.CreateProfile;
-import pkgeditprofile.EditCustomerProfile;
-import pkgloanoptions.LoanOptions;
 import pkglogin.Authenticate;
-import java.util.ArrayList;
-import java.util.HashMap;
+import pkgcontact.ContactDetails;
 
 /**
  *
@@ -18,9 +14,9 @@ public class TestHarness {
 
     private AutoPayment autoPay;
     private CheckBalance checkBal;
-    private EditCustomerProfile editCustomer;
+    private CreateProfile createProfile;
+    private ContactDetails contactDetails;
     private Authenticate userAuth;
-    private LoanOptions loanOptions;
 
     /**
      * Default constructor for TestHarness that runs tests.
@@ -28,33 +24,34 @@ public class TestHarness {
     public TestHarness() {
         testAutoPayment();
         testCheckBalance();
-
         testCreateProfile();
         testContactDetails();
-
-        //testEditCustomerProfile();
         testAuthenticate();
-        //testLoanOptions();
-        //testNewProfile();
     }
 
     /**
      * Test for AutoPayment controller class.
      * <p>
      * Test for AutoPayment class creates an instance of the class, then checks
-     * the 'getStatus' and 'setAutoPay' methods.
+     * the 'setAutoPay' and 'getExistingAutoPay' methods.
      */
     private void testAutoPayment() {
         System.out.println("Start of AutoPayment test");
         this.autoPay = new AutoPayment();
-        if (true) {
+        if (autoPay.setAutoPay("0000", "1111", "150") == 1) {
             System.out.println(">setAutoPay: Pass");
         } else {
-            System.out.println(">setAutoPay: Incomplete Test");
+            System.out.println(">setAutoPay: Fail");
+        }
+        if (autoPay.getExistingAutoPay() == 1) {
+            System.out.println(">getExistingAutoPay: Pass");
+        } else {
+            System.out.println(">getExistingAutoPay: Fail");
         }
         System.out.println("[End]");
+        System.out.println("");
     }
-
+    
     /**
      * Test for CheckBalance controller class.
      * <p>
@@ -64,93 +61,60 @@ public class TestHarness {
     private void testCheckBalance() {
         System.out.println("Start of CheckBalance test");
         this.checkBal = new CheckBalance();
-        if (this.checkBal.getBalance() == 0) {
+        if (this.checkBal.getBalance() != -1) {
             System.out.println(">getBalance: Pass");
         } else {
             System.out.println(">getBalance: Fail");
         }
         System.out.println("[End]");
+        System.out.println("");
     }
 
-    public void testCreateProfile() {
-
+    private void testCreateProfile() {
         System.out.println("Start of CreateProfile test");
-        ArrayList<CreateProfile> profiles = new ArrayList<>();
-        System.out.println();
+        this.createProfile = new CreateProfile();
+        if (createProfile.newUser("TestUser", "Password", "Date", "Address", "0000000000", "Test@email.com") == 0) {
+            System.out.println(">newUser: Pass");
+        } else {
+            System.out.println(">newUser: Fail");
+        }
         System.out.print("[End]");
+        System.out.println("");
     }
 
-    public void testContactDetails() {
-        System.out.println("");
+    private void testContactDetails() {
         System.out.println("Start of ContactDetails test");
-        System.out.println("");
+        this.contactDetails = new ContactDetails();
+        if (contactDetails.getPhoneNumber().equals("1-800-111-2222")) {
+            System.out.println(">getPhoneNumber: Pass");
+        } else {
+            System.out.println(">getPhoneNumber: Fail");
+        }
+        if (contactDetails.getEmail().equals("atzfinance@email.com")) {
+            System.out.println(">getEmail: Pass");
+        } else {
+            System.out.println(">getEmail: Fail");
+        }
+        if (contactDetails.getAddress().equals("10 Some Street, New York")) {
+            System.out.println(">getAddress: Pass");
+        } else {
+            System.out.println(">getAddress: Fail");
+        }
         System.out.println("[End]");
+        System.out.println("");
     }
-
-    /**
-     * Test for EditCustomerProfile controller class.
-     * <p>
-     * Test for EditCustomerProfile class creates an instance of the class, then
-     * checks the 'getStatus' and 'editProfileInfo' methods.
-     */
-//    public void testEditCustomerProfile() {
-//        System.out.println("Start of EditCustomerProfile Test");
-//        this.editCustomer = new EditCustomerProfile();
-//        HashMap<String, String> info = new HashMap<>();
-//        info.put("1", "asdf");
-//        info.put("2", "fdsa");
-//        if (this.editCustomer.getStatus() == -1) {
-//            System.out.println("getStatus: Pass");
-//            this.editCustomer.editProfileInfo(info);
-//            if (this.editCustomer.getStatus() == 0) {
-//                System.out.println("Changes Successful");
-//            } else {
-//                System.out.println("Error");
-//            }
-//        } else {
-//            System.out.println("getStatus: Failure");
-//        }
-//        System.out.println("[End]");
-//    }
-    /**
-     * <p>
-     * Test for LoanOptions class creates an instance of the class, then checks
-     * that 'getOptList' and 'getOptions' work as intended
-     */
-//    public void testLoanOptions() {
-//        System.out.println("Start of LoanOptions Test");
-//        this.loanOptions = new LoanOptions();
-//        ArrayList<String> options = this.loanOptions.getOptList();
-//        for (String option : options) {
-//            System.out.println(option);
-//        }
-//        System.out.println("[End]");
-//    }
-    public void testAuthenticate() {
+    
+    private void testAuthenticate() {
         System.out.println("Start of Authenticate test");
         this.userAuth = new Authenticate();
-        String email = "axf123";
-        String pw = "password123";
-        if (this.userAuth.userLogIn(email, pw) == 1) {
-            System.out.println("User Authenticated");
+        String username = "Steve";
+        String pw = "pass1";
+        if (this.userAuth.userLogIn(username, pw) == 1) {
+            System.out.println(">userLogIn: Pass");
         } else {
-            System.out.println("Invalid login credentials. Please try again ");
+            System.out.println(">userLogIn: Fail");
         }
         System.out.println("[End]");
+        System.out.println("");
     }
 }
-/*
-    public void testNewProfile() {
-        System.out.println("Start of NewProfile test");
-        this.userProfile = new NewProfile();
-        String email = "axf123";
-        this.userProfile.checkEmail(email);
-        if (this.userProfile.getStatus() == 0) {
-            System.out.println("Profile already exists");
-        } else {
-            System.out.println("New profile");
-        }
-        System.out.println("[End]");
-    }
-}
-*/

@@ -2,14 +2,12 @@ package testharness;
 
 /**
  *
- * @author Arcticoptica
+ * @author Team Rho
  */
 public class TestRun {
     
-    private static TestHarness testharness;
-    
     public static void main(String[] args) {
-        testharness = new TestHarness();
+        TestHarness test = new TestHarness();
     }
     
 }

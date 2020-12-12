@@ -4,17 +4,21 @@
  * and open the template in the editor.
  */
 package pkgcreateprofile;
+import javax.swing.JOptionPane;
+import pkglogin.Authenticate;
+import pkglogin.User;
 
 /**
  *
  * @author mrr17
  */
 public class CreateProfileUI extends javax.swing.JFrame {
-
+    private final Authenticate parent;
     /**
      * Creates new form CreateProfileUI
      */
-    public CreateProfileUI() {
+    public CreateProfileUI(Authenticate parent) {
+        this.parent = parent;
         initComponents();
     }
 
@@ -234,7 +238,18 @@ public class CreateProfileUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dobTextFieldActionPerformed
 
     private void createProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProfileButtonActionPerformed
-        // TODO add your handling code here:
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String dob = dobTextField.getText();
+        String address = addressTextField.getText();
+        String phoneNumber = phoneNumberTextField.getText();
+        String email = emailTextField.getText();
+        if (firstName.equals("") || lastName.equals("") || dob.equals("") || address.equals("") || phoneNumber.equals("") || email.equals("")) {
+            JOptionPane.showMessageDialog(this, "Missing field");
+        } else {
+            User newUser = new User(0005, firstName, lastName, dob, address, phoneNumber, email);
+            int status = this.parent.newUser(firstName, lastName, dob, address, phoneNumber, email);
+        }
     }//GEN-LAST:event_createProfileButtonActionPerformed
 
     private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
